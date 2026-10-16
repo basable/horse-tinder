@@ -1,0 +1,129 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.982 0.012 75);
+  --foreground: oklch(0.24 0.03 40);
+  --card: oklch(0.995 0.006 75);
+  --card-foreground: oklch(0.24 0.03 40);
+  --popover: oklch(0.995 0.006 75);
+  --popover-foreground: oklch(0.24 0.03 40);
+  --primary: oklch(0.57 0.19 15);
+  --primary-foreground: oklch(0.99 0.01 75);
+  --secondary: oklch(0.945 0.025 70);
+  --secondary-foreground: oklch(0.32 0.04 45);
+  --muted: oklch(0.955 0.015 70);
+  --muted-foreground: oklch(0.48 0.03 45);
+  --accent: oklch(0.58 0.13 150);
+  --accent-foreground: oklch(0.99 0.01 150);
+  --destructive: oklch(0.56 0.2 28);
+  --destructive-foreground: oklch(0.99 0.01 28);
+  --border: oklch(0.9 0.02 65);
+  --input: oklch(0.87 0.025 65);
+  --ring: oklch(0.57 0.19 15);
+  --glow: oklch(0.57 0.19 15 / 0.4);
+  --card-shadow: oklch(0.3 0.05 40 / 0.35);
+
+  --coat-shadow: oklch(0.22 0.03 40);
+  --coat-bay: oklch(0.46 0.11 42);
+  --coat-chestnut: oklch(0.56 0.14 45);
+  --coat-black: oklch(0.3 0.02 40);
+  --coat-grey: oklch(0.8 0.01 60);
+  --coat-palomino: oklch(0.8 0.11 85);
+  --coat-buckskin: oklch(0.7 0.1 70);
+  --coat-dun: oklch(0.66 0.06 70);
+  --coat-roan: oklch(0.6 0.06 20);
+}
+
+.dark {
+  --background: oklch(0.17 0.015 30);
+  --foreground: oklch(0.95 0.012 70);
+  --card: oklch(0.215 0.018 30);
+  --card-foreground: oklch(0.95 0.012 70);
+  --popover: oklch(0.215 0.018 30);
+  --popover-foreground: oklch(0.95 0.012 70);
+  --primary: oklch(0.7 0.17 15);
+  --primary-foreground: oklch(0.17 0.02 15);
+  --secondary: oklch(0.27 0.02 35);
+  --secondary-foreground: oklch(0.92 0.015 70);
+  --muted: oklch(0.25 0.018 35);
+  --muted-foreground: oklch(0.74 0.025 60);
+  --accent: oklch(0.72 0.14 150);
+  --accent-foreground: oklch(0.17 0.03 150);
+  --destructive: oklch(0.67 0.2 28);
+  --destructive-foreground: oklch(0.16 0.02 28);
+  --border: oklch(0.32 0.02 35);
+  --input: oklch(0.36 0.02 35);
+  --ring: oklch(0.7 0.17 15);
+  --glow: oklch(0.7 0.17 15 / 0.35);
+  --card-shadow: oklch(0 0 0 / 0.6);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --shadow-glow: 0 18px 48px -18px var(--glow);
+  --shadow-card: 0 30px 60px -30px var(--card-shadow);
+}
+
+@utility bg-hero {
+  background-image:
+    radial-gradient(55% 50% at 15% 0%, color-mix(in oklch, var(--primary) 20%, transparent), transparent),
+    radial-gradient(45% 45% at 100% 30%, color-mix(in oklch, var(--accent) 16%, transparent), transparent);
+}
+
+@utility bg-pasture {
+  background-image:
+    radial-gradient(80% 60% at 20% 0%, color-mix(in oklch, var(--primary) 30%, transparent), transparent),
+    radial-gradient(70% 60% at 100% 100%, color-mix(in oklch, var(--accent) 32%, transparent), transparent),
+    linear-gradient(180deg, var(--secondary), var(--muted));
+}
+
+@utility bg-dots {
+  background-image: radial-gradient(color-mix(in oklch, var(--foreground) 9%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
